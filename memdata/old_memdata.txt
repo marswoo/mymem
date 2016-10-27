@@ -1,0 +1,193 @@
+awk 二维数组for (item in array) split(temp, output, SUBSEP); if ((i,j) in array); 支持多维数组a[1,2,3,4]11371180958
+awk 当做数字处理的默认值if (1<a) 如果a没有定义，a就是011371182054
+struct_time -> string strftime(format [, struct_time]); asctime([struct_time])11371178869
+awk gsubgsub(r,s [,t])：和gensub相同,没有h的概念。21371178307
+awk indexindex(string, substring),如果找substring则返回substring在string中首次出现的位置,如果没找到返回021371182062
+awk matchmatch(s,r),返回s中正则表达式r出现的位置,没有匹配到返回021371179367
+awk splitsplit(s, output, a)：把s用a进行划分,结果存放在output中,并返回字段总数。21371182067
+awk sprintfsprintf(format, vars)返回格式化后的字符串21371178367
+awk substrsubstr(string, i [,n])返回string从i到n的子字符串,如果没有指定n就是i到结尾的字符串。全闭区间。21371178375
+csplit file 划分为两个文件csplit num file: 按行号分割; %%:将文件进行分割，%pattern%按照pattern匹配将前一部分输出; //:将文件进行分割，/pattern/按照pattern匹配将每个部分都输出21371178386
+date_obj.ctime() 返回时间字符串21371178447
+datetime_obj.ctime() 返回时间字符串21371178452
+date精确时间date +"%s.%N" 返回秒以后的时间，返回的时间格式：1370162923.82833200021371178459
+gawk function和shell中不一样,可以给定形参列表：function func(var1, var2){return var1*var2}；函数定义在BEGIN前面。21371178470
+gawk gensubgensub(r, s, h [, t])：1.如果提供t则对t进行替换,否则对$0进行替换；2.通过正则表达式r进行匹配,如果h为g或者G开头的字符串,则将匹配结果替换成s,如果h为数字,则替换第h处的字符串为s。21371178477
+gawk mktimemktime(format)按照format给出的格式返回时间戳,format例子："2013 1 1 0 0 0",如果转话失败返回-121371178507
+gawk strftimestrftime(format [, timestamp]),例子：strftime("%Y%m%d", systime())21371178622
+gawk常用变量FS分隔符 RS行分隔符 OFS ORS NF字段个数(print $NF打印最后一项) NR当前处理的行数 FNR当前处理的在文件中的行数 FILENAME文件名21371178641
+grep grep -e exp1 -e exp2 file 同时grep多个pattern21371178681
+join -a1 file1 file2显示file1的所有内容，如果在file2中没有匹配，则显示为空。将join的字段显示在最前面，然后按照参数顺序显示。例子：join -j1 2 -j2 2 -o0 x xx 输出join列；join -j1 2 -j2 2 x xx 必须有空格。21371178690
+join -t char把char作为input和output的分隔符21371178725
+letlet后加整数运算操作，例如let i++，((i++))也可做到21371178728
+paste -d'list' 用list中的每一个字符作为文件之间的分隔符21371178729
+paste -s把file1中每个文件中的每一行合并成一行（默认用tab分割）输出，然后再同样处理file221371178747
+(shell_cmds)在子shell中运行shell_cmds不影响父shell中变量的值21371178757
+sort -b忽略文本开头的空白, -i忽略不可打印字符，-o输出文件，-n数值排序，-d只考虑空白符和alnum，-k以第几个字段进行排序（可叠加，-k1 -k2先第一个后第二个），-s stable排序，-t指定输入数据的分隔符，-c检查文件的排序情况，-cu检查文件是不是完全有序21371178789
+string -> struct_time strptime(string [, format])21371178822
+${#string}返回string变量的长度21371178826
+struct_time -> timestamp mktime(struct_time)21371178920
+timestamp -> string ctime([timestamp])21371182080
+timestamp -> struct_time localtime([timestamp]); gmtime([timestamp])21371182085
+uniq -f跳过一定的字段21371182094
+uniq -w之比较前n个字符21371178958
+vim显示十六进制:%!xxd21371178961
+删除文件尾空白行sed ':start; /^\n*$/{$d; N; b start}' /^\n*$/在当前模式空间中找末尾的连续的换行符,如果当前是最后一行则删除,否则加载新行并跳转；如果取下一行失败（N）则自动结束脚本；错误脚本：sed '{:start; /\n*$/$d; N; b start}',/pattern/$是非法命令。错误例子：sed '{:start;N;/\n*$/{$d;};b start}' 当加载完最后一行后,虽然/\n*$/找到最后的空行部分,但是$d会删除所有模式空间数据,导致没有输出21371178997
+字符串头尾删除${var#pattern}从头删除pattern（非贪婪匹配）；${var##pattern}从头删除pattern（贪婪匹配）；${var%pattern}从尾删除pattern（非贪婪）；${var%%pattern}从尾删除pattern（贪婪匹配）21371179299
+字符串替换${var/a/b}将var中的第一个a替换成b；${var//a/b}将var中的所有a替换成b21371182096
+显示文件倒数n行sed '{:start; $q; N; n+1,$D; b start}' file,$q达到最后一行就退出；n+1,$D如果发现最后一行是模式区的第n+1行,就删除模式区的第一行；如果没有-n,默认会输出模式空间中的内容；如果有-n则需要p命令输出；所以sed -n '{:start; ${p;q}; N; n+1,$D; b start}' file也同样奏效21371180333
+alias -p列出所有别名31371179327
+awk lengthlength([s]),如果提供s则返回字符串或者数组的长度；如果没给定参数,返回$0的长度31371179329
+col -b过滤掉所有控制字符31371179388
+col -x 用空格替换制表符31371179403
+date -ddate "3 days ago"， 解析-d后面的字符串，返回三天前时间；字符串也可以传入一个ctime格式的字符串。31371179404
+date +"format"例子，按照format给出时间：date -d "today" +"%Y-%m-%d %H:%M:%S"31371179411
+date时间戳date +"%s"31371179412
+date解析时间date -d "20130531"; 要想解析更细的时间，就要保留原本date返回的格式：date -d "`date`" +"format"31371179413
+date返回当前时间的ctime格式31371179415
+echo转义echo "$@" 对$@进行取值后再组合成字符串，echo '"$@"'输出"$@"这个字符串31371179418
+exportvar=1 其中var不能用$引用31371179425
+((expr))的功能expr和括号之间不用空格；进行c语言式的三目运算；大小比较if ((a>2))；++--操作符（((a++))的返回值是自增前的）; i=1; echo $((i++)) 引用返回值必须加$符号。31371179426
+gawk asortasort(data, [output])：对value进行排序,key被value的顺序值代替,output为输出结果。31371179429
+gawk asortiasorti(data [, output])：对key进行排序,输出的结果中,value是排序后的原数组的key,key是原数组key排序的顺序值。31371179444
+gawk printfprintf "format string", var1, var2……31371179446
+gawk printf格式化参数%c显示ascii码 %d %e科学计数 %f %g科学计数和浮点更短的 %o八进制 %s %x十六进制小写 %X十六进制大写31371179449
+gawk systimesystime()返回当前时间戳31371179472
+gawk内建位函数and(a,b); compl(val); or(a,b); lshift(a,count); xor(a,b)31371179474
+gawk内建数学函数exp(); rand(); srand(x)为随机数指定一个种子; int(x)31371179485
+gawk 函数库gawk -f lib -f script datafile31371179533
+gawk变量引用不用加$31371179541
+gawk命令行全局变量gawk -f script n=2 data,在script脚本中可以引用n这个变量,但是在BEGIN中不能引用,如果要在BEGIN中引用需要加-v参数：gawk -f script -v n=2 data；gawk -v n=2 'BEGIN{print n}' -v必须写在前面。31371179543
+gawk字段匹配gawk '$1 ~ /pattern/'；gawk '$1 !~ /pattern/'31371179562
+gawk字符串大小写tolower(string), toupper(string)31371179581
+gawk 数组遍历for (i in array)i是key（和python一样）；delete array[key]来删除数组。31371179583
+((i=2**3))对i进行算数运算，不需要空格，只有[]进行31371179587
+join -i忽略大小写31371179591
+join -j1 -j2 分别指定file1 和file2进行join的字段31371179649
+join -j numfile1 和file2同时以第num个字段进行join31371179651
+join -o 1.1 file1 file2输出第一个文件的第一个字段31371179652
+killall命令可以通过进程名和通配符来结束对应进程例如killall article*31371179654
+md5sum file返回file的MD5值31371179655
+passwd直接调用可修改自己的密码，只有root用户可以修改别人的密码（后面带参数）31371179661
+paste 连接两个文件31371179663
+ps aux 显示信息VSZ进程占用内存大小 RSS进程为被换出内存的部分大小 STAT进程状态31371179664
+sed加倍行距sed '/^$/d;$!G;p' 后者 sed '/^$/b; $!G;p'；如果执行了d，后面就不执行了。31371179665
+sed跳转循环bsed '{s/a/b/b; p}' 发生替换后跳转到最后,p不执行；sed '{s/a/b/b start; p; :start; s/b/c/}'发生a替换成b的替换之后,跳转到start执行后面的命令；echo “hello, world, this, is, test” | sed '{:start; s/,//1p; /,/b start}'循环替换语句中的,并输出31371179682
+split file划分为多个文件；-l按行数划分；-b按字节划分，例如-b2k；-a2给出输出后缀的长度31371179717
+string -> timestamp mktime(strptime(string, format))31371179739
+uniq -c 数重复的行数, 但是输入必须是有序的 ; -d 只输出重复行 ; -i 忽略大小写 ; -u 只输出unique行31371179760
+useradd useradd -d /apsarapangu/disk1/di.wudi -m di.wudi -p -e31371179766
+var=${str:-expr} var=${str:-expr}如果str没有设置或者为空字符串，var赋值为expr，否则var赋值为str31371179774
+var=${str-expr} 如果str没有设置，var=expr；如果str为空，var=空；如果str不空则var=str；其中str不用$取引用（直接引用的是$str），而expr必须显示引用，否则就是字符串。31371179789
+var=${str:=expr} 如果str没有设置，则var=expr且str=expr；如果str为空，则str=expr，var=expr;如果str不空，则str不变，var=$str31371179987
+var=${str=expr} 如果str没有设置，则var=expr且str=expr；如果str为空，则str不变，var=空；如果str非空，则str不变，var=$str31371180045
+var=${str?expr} 如果str没有设置，则输出expr到stderr；否则var=$str31371180052
+var=${str:?expr}如果str没有设置或者为空都将expr输出到stderr，否则var=$str; 可以测试变量是否存在而不用if [ -z "$var" ]， var=${var?"var is not set"}31371180054
+三目运算符((a>2?1:2))31371180103
+[与或关系[ string == string -o hello == hello ]等价于[[ string == string ]] && [[ hello == hello ]]31371180104
+删除中间多余空白行sed '{/./,/^$/!d}' file31371180107
+删除变量unset而不是del，并且unset变量后跟的操作数不用带$31371180221
+删除开头空白行sed '{/./,$!d}' file31371180224
+字符串单引号双引号$的作用echo以下变量，$"a\nb"无转义 $'a\nb'转义 "a\nb"无转义 'a\nb'无转义, 单引号不会解析$a变量，只会输出"$a"这个字符串。而双引号会解释变量31371180243
+括号的快捷应用(())用作整数运算；[[]]用作字符串比较；[]用作字符串存在和文件类型（存在可读等）比较、字符串大小比较；( cmd1;cmd2 )在subshell中运行命令、初始化数组；{ cmd1;cmd2}代码块31371180318
+整数运算的方法`` $[] (()) let31371180321
+永久重定向exec 1>output_file,exec 0<input_file,exec 3<>file，exec 3<&0 保存标准输入exec 1>&3 保留标准输出31371180444
+空间操作h模式空间复制到保持空间 H模式空间附加到保持空间 g保持空间复制到模式空间 G保持空间附加到模式空间 x交换保持空间和模式空间31371180551
+获得参数数组array=(`echo "$@"`) array的性质是一个数组，array=`(echo "$@")` array的性质是一个字符串31371180563
+访问数组内容for i in ${array[*]}; do echo $i; done31371180668
+[[运算符[[ hello == hell* ]]模式匹配字符串（字符串前后和等号前后都必须有空格，[]操作符也是一样）；[[ hello =~ hel{2} ]]应用正则表达式进行匹配31371180696
+()进程替换comm -3 <(sort a|uniq) <(sort b|uniq)，需要set +o posix；url:http://www.linuxjournal.com/content/shell-process-redirection 31371180808
+expr match str re_pattern等价与expr str ： re_pattern41371181353
+expr str : re_pattern返回匹配的长度,没有匹配上就返回0。等价与expr match str re_pattern41371181391
+[ exp ] 字符串比较(=和==效果一样)= != \> \< -n（为非零） -z（为零）41371180864
+getopts处理选项1.while getopts :ab:c opt; do case…..; done; shift $[ OPTIND - 1 ]; for i in $@… 2. $OPTARG41371181477
+sed 'N;D;p' file当执行过D或者d之后p不起作用；D会跳转流,下次读取还会读取之前读取的“第二行”41371180936
+sed 'N'执行N后,会取缓冲区的下一行,下一次取则是从“下一行”的下一行取。41371180946
+sed 'P;N;D'P打印缓冲区中的上一行,N加载下一行到缓冲区,D删除缓冲区的第一行41371181113
+sed删除pattern的下一行sed '/pattern/{n;d}' file,匹配到pattern后,n加载下一行,d删除当前行（即刚刚加载的下一行）41371181117
+sed删除命令d：删除当前缓冲区中的所有行（如果用了N就是删除两行）；D：删除缓冲区中的前一行,和N一起用。41371181135
+sed引用匹配字符串sed '{s/\(hello\) \(world\)/\1/p}' 将hello world替换成hello,see中的(){}如果要进行特殊用途,比如匹配某一段内容,就要进行转义。41371181138
+sed 执行多命令如果有pattern匹配,并且要在匹配基础上进行操作：sed '/pattern/{cmd1; cmd2}；如果没有“/”则直接用“;”分割命令：sed 's/a/b/g; N; s/a/b/g' file41371181154
+sed排除命令sed '$!s/1/a/p' -n file,除了最后一行都将1替换成a；sed '$!N; s/a/b/p' -n file 除了最后一行都加载下一行,然后进行替换操作（执行多个命令）41371181169
+sed数字加逗号sed '{:start; s/\(.*[0-9]\)\([0-9]\{3\}\)/\1,\2/; t start}；最前必须有一个0-9，否则*可以不匹配，会导致死循环。正则的+不好使。'41371181172
+sed文件内容合并sed '$r readfile' writefile,将readfile的内容插入到writefile的末尾41371181179
+sed替换之&sed 's/.at/"&"/' 将cat或者hat等加上双引号41371181188
+sed模式替换sed '{s/a.b/c/}' 将三个字符,以a开头b结尾的都替换成c41371181195
+sed模式空间保持空间模式空间是当前匹配到的内容和正在处理的内容缓冲区,保持空间是暂时保存数据的缓冲区41371181201
+sed跳转t根据替换命令的结果来决定是否跳转；sed '{s/a/b/; t; p}'如果发生了替换命令,则不执行p,否则执行p；sed '{:start; s/a/b/1p; t start; p}'如果发生了a替换成b,就跳转到start,继续第二次替换,否则执行后面的p。41371181203
+sed颠倒文件输出sed -n '{1!G; h; $p}' file41371181205
+trap捕捉信号trap commonds signals,trap "echo get exit" EXIT。只有执行到该句的时候才能捕捉信号。41371181845
+函数返回数组echo ${myarray[*]}41371181249
+给文件添加行号sed '=' file | sed 'N; s/\n/ /'41371181259
+聚合表达式Sat(urday)? 匹配Sat和Saturday。聚合表达式和"|"联合使用(a|b)c(d|e)41371181996
+重定向&>,1> 2>同时重定向41371181279
+a=$[math_exp]进行数学计算,常规计算都可以51371181281
+break n终止外面的第n层循环51371181283
+case语句case var in var1) expression;; var2|var3) expression2;; esac。如果在case选项中执行多行命令,就新起一行,不用加分号。匹配所有选项用“*”51371181284
+continue n跳到外面的第n层循环继续执行51371181305
+c格式forfor (( i=0;i<10;++i )); do xxx; done51371181307
+done之后对于for和while,如果在中间有echo语句,在done之后用>可以重定向,用| sort可以排序51371181316
+echo -n不换行51371181317
+expr a \& b如果没有null或者0则返回a,否则返回051371181318
+[[ exp == re_exp ]]进行字符串的正则匹配,只支持以xx开头和以xx结尾,并且只能用*51371181321
+[ expression ]和test相同51371181327
+expr exp进行加减乘除求余等操作51371181330
+expr index str char返回char在str中的位置,没找到返回0。第一个字母的index是151371181332
+expr length str返回字符串长度。51371181348
+expr substr str pos length字符串从1开始技术,length是返回的子字符串的长度51371181412
+expr数学操作转义对于*和&等操作符,在exp中要转义51371181438
+[ exp ]判断文件-e -f -d -x -w -r -s -nt -ot,依次为 存在,是文件, 是文件夹,可执行,可写,可读, 非空,更新,更旧51371181442
+[ exp ] 数字判断-gt -et -ge -lt -le -ne。只能针对整数,如果对于浮点数要用bc命令51371181448
+[ exp ]符合条件[ exp ] && [ exp ],[ exp ] || [ exp ]51371181451
+(( exp ))进行高级的整数运算,例如** ~ >> <<等51371181453
+for i in a bfor i in a b; do echo $i; done。输出a b51371181456
+for 遍历目录for i in /.../*; do expression; done。也可以遍历多个目录：for i in /var/account /var/atest_home /var/cache /var/clone /var/cvs /var/db /var/empty /var/ftp /var/games /var/gemclient.data /var/lib /var/local /var/lock /var/log /var/mail /var/net-snmp /var/nis /var/opt /var/preserve /var/racoon /var/run /var/spool /var/tmp /var/www /var/yp /usr/local/*; do ...51371181461
+gawk正则区间--re-interval51371181462
+if-elif语句if expression; then expression2; elif expression 3; then expression4; fi51371181587
+if-else语句if expression; then expression2; else expression; fi51371181592
+IFSbash shell中的分隔符 IFS=$' ' IFS=: IFS=$';:" '51371181593
+if [ -z "$str" ]判断$str是否定义,如果没有定义则执行,和-n相反51371181599
+if语句if expression; then expression2; fi。语句是否执行要根据expression的返回码51371181601
+if语句判断文件要加引号,否则文件名中有空格会出错 if [ -d "$path" ]…51371181603
+Linux信号SIGINT终止进程ctrlC SIGTERM如果可能的话终止进程 SIGSTOP停止进程ctrlZ SIGTSTP如果可能的话停止进程 SIGCONT继续运行进程 SIGKILL无条件终止进程 SIGQUIT如果可能终止进程51371181606
+mktemp -d dir.XX在当前目录下创建目录51371181696
+mktemp -dt dir.XX在/tmp/目录想创建目录51371181705
+mktemp file.XXX在当前目录下创建临时文件,XXX用随即字母代替,并返回文件名；51371181707
+mktemp -t file.XX在/tmp/下创建临时文件51371181709
+nice -n 10 cmd以谦让度10 运行cmd51371181710
+read -p"提示符" x,读取x,-p提示符。如果不指定变量x,则都会存储到$REPLY变量中 -t超时 -s密码隐藏51371181724
+renice num -p pid重新设置pid的谦让度,只能升高不能降低,降低只能用sudo。51371181729
+sed appendsed '$a\hello world' file,在最后一行后插入新行51371181730
+sed -e后面跟“cmd1;cmd2”；sed 's/a/b/' file51371181740
+sed flags/a/b/flag,num：处理的当前行的第num个a会被替换成b；w处理完后写回源数据；p输出发生替换的行,和n配合（n不输出输入的行,p输出发生替换的行）；g替换当前行的所有a51371181742
+sed -f后面跟脚本文件,执行文件中的脚本；sed 's/a/b/' file51371181750
+sed -n不输出处理的行,只等待print输出的行；sed 's/a/b/' file51371181752
+sed pattern替换sed '/pattern/s/a/b/'：将含有pattern的行用b替换a。pattern可以用正则表达式51371181755
+sed写文件sed '1,2w newfile' file,将file中的头两行写入newfile中51371181756
+sed 字符mapsed 'y/abc/def/' file 将每一行数据进行替换,a替换成d,b替换成e……51371181758
+sed打印特定行sed -n '3,4p' file,打印3行和4行51371181763
+sed插入sed '$i\hello world' file,在最后一行前插入新行51371181769
+sed插入多行sed '2i\line1\ （换行） line2' file51371181771
+sed 数字寻址2s/a/b/,只把第二行用b替换a；2,3s/a/b/ 把2行和3行都替换；2,$s/a/b/把从2行往后的所有行都进行替换51371181773
+sed显示修改前后的内容sed -n '/pattern/{p;s/a/b/p}' file51371181779
+sed 模板填充sed '/TEMPLATE/{r contentfile; d}' templatefile：在包含TEMPLATE的文本后插入contentfile中的内容,然后删除TEMPLATE行51371181794
+sed 组合命令sed '2,${cmd1;cmd2}' file51371181822
+sed输出行号sed '/pattern/{=;p}' file51371181825
+shell中访问字符串一定要用""包裹,在赋值时,"不会当做字符串的一部分,除非转义51371181827
+shell创建库在另外一个脚本中定义函数之后,通过source或者“.”来引入该库51371181833
+tee filename从stdin中读入内容,重定向到filename和stdout,tee -a标示追加51371181836
+test命令test `expression`51371181843
+trap移除捕捉trap - signals,移除捕捉到的signal并恢复到正常状态51371181867
+函数中的变量函数中的局部变量会改变全局变量的值,所以要用local声明变量。51371181882
+函数的返回值运行完函数之后要立刻取返回值；可以用return返回返回值,但是要在0-255之间；最好用echo返回函数值,然后在外面获得输出结果。51371181890
+删除包含pattern的行sed '/pattern/d',删除所有含有pattern的行51371181894
+删除某行到结尾sed '2,$d' file,删除2行往后所有的行51371181896
+$@和$*都是返回参数列表集合,$@是以数组形式,$*是以单个字符串的形式51371181898
+处理很多浮点数result=`bc<<EOF expressions EOF`。每一个表达式要写在新的一行,引用变量不用加$51371181900
+处理浮点数result=`echo "scale=4;expression" | bc`51371181903
+开关删除sed '/a/,/b/d' file,a打开模式,b关闭模式,之间的都删除。但是关闭模式后如果再遇到a还会打开模式。51371181915
+${!#}最后一个参数51371181925
+正则特殊字符[[:alpha:]] [[:alnum:]] [[:blank:]] [[:digit:]] [[:lower:]] [[:upper:]] [[:print:]] [[:punct:]] [[:space:]]（任意空白符,空格 制表 NL……）51371181954
+获得传入数组myarray=(`echo "$@"`)51371182033
+选项标准化-a -o -i -f -h -d -y -v -r -s51371182035
+遍历文件或者目录注意要养成测试一下的喜欢 -d -f51371182044
